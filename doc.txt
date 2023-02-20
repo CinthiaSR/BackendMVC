@@ -1,0 +1,86 @@
+Ejercicios para la Clase ExpressJS
+
+1. Generar un proyecto base para una API de ExpressJS, considerando los siguientes requerimientos: (10 min)
+Deben crear una carpeta para el proyecto dentro de su sistema operativo
+Inicializar el package.json, con el comando npm init -y
+Deben instalar las dependencias: express, nodemon y soportar el npm script “dev” en el bloque de “scripts” del package.json. Se requiere el uso de nodemon en este npm script y que dicho script se ejecute con el comando: npm run dev
+
+	npm install express
+
+	npm install --save-dev nodemon
+
+Adicional configurar su proyecto para que dé soporte a la sintaxis ES5+ con Babel. Utiliza la dependencias de desarrollo usando NPM
+
+ npm install --save-dev @babel/core @babel/cli @babel/preset-env
+
+Soporte a los presets de Babel en el package.json
+
+2. Crea una aplicación básica de Express que escuche en el puerto 3000 y responda con un mensaje de "Bienvenidos a la API RESTful de la Generacion 23a" en la ruta principal ("/"). (15 min)
+
+Deben generar soporte en la ruta (endpoint) principal (“/”). usando el verbo GET
+El endpoint debe contestar con un codigo de estatus 200 y enviar la respuesta en formato JSON al cliente que hace la solicitud. Utilizar el middleware de express.json(), para que la API soporte el formato “JSON” en todas las peticiones.
+Como cliente, debes utilizar la herramienta POSTMAN o similar.
+
+3. Crear una ruta (endpoint) de “/users” y que la misma devuelva una  lista de usuarios en formato JSON. La lista debe contener objetos que representen a los usuarios y que incluyan su id, nombre, correo electrónico y fecha de registro. (20 min)
+
+Deben generar soporte en la ruta (endpoint) “/users”. usando el verbo GET
+El endpoint debe contestar con un codigo de estatus 200 y enviar la respuesta en formato JSON al cliente que hace la solicitud. POSTMAN o similar.
+La API debe devolver un Array de objetos JSON que contengan los datos de todos los usuarios. Ejemplo: 
+[
+{“id”: 1,  “nombre”: “usuario1”, “correo electrónico”: “usuario1@mail.com”, “creado”: “2023-01-01”},
+{ “id”: 2, “nombre”: “usuario1”, “correo electrónico”: “usuario1@mail.com”, “creado”: “2023-01-01”},
+{ “id”: 3, “nombre”: “usuario1”, “correo electrónico”: “usuario1@mail.com”, “creado”: “2023-01-01”}
+]
+
+4. Crea una ruta para "/users/:id" que responda con la información de un usuario específico en formato JSON. Utiliza el parámetro "id" para identificar al usuario. (20 min)
+
+Deben generar soporte en la ruta (endpoint) “/users”. usando el verbo GET
+El endpoint debe contestar con un codigo de estatus 200 y enviar la respuesta en formato JSON al cliente que hace la solicitud. POSTMAN o similar.
+Utilizar una lógica dentro de la ruta usando JS, para extraer la información del usuario
+La API debe devolver un objeto JSON que contenga los datos del usuario. Ejemplo: 
+
+{“id”: 1,  “nombre”: “usuario1”, “correo electrónico”: “usuario1@mail.com”, “creado”: “2023-01-01”}
+
+5. Refactoriza tu aplicación para dar soporte a controladores y rutas, utilizando el Router de ExpressJS
+
+Deben estructurar las carpetas y los archivos del proyecto de la siguiente manera:
+
+	|- nombre-del-proyecto
+		|- node_modules
+		|- src
+			|- controllers
+				|- controller.js
+|- controller2.js
+			|- routes
+				|- router.js
+				|- router2.js
+		.gitignore
+		app.js
+		package.json
+		package-lock.json
+Crear el controlador de usersController.js
+Crear la ruta usersRoutes.js
+Debes importar en enrutador usersRouter en app.js y eliminar las rutas antiguas en el mismo archivo (app.js). Adicional deben dar soporte en la ruta principal (“/”) usando como middleware el enrutador usersRouters
+
+app.use('/', usersRoutes)
+
+El endpoint debe contestar con un codigo de estatus 200 y enviar la respuesta en formato JSON al cliente que hace la solicitud. POSTMAN o similar.
+La API debe devolver un Array de objetos JSON que contengan los datos de todos los usuarios. Ejemplo: 
+[
+{“id”: 1,  “nombre”: “usuario1”, “correo electrónico”: “usuario1@mail.com”, “creado”: “2023-01-01”},
+{ “id”: 2, “nombre”: “usuario1”, “correo electrónico”: “usuario1@mail.com”, “creado”: “2023-01-01”},
+{ “id”: 3, “nombre”: “usuario1”, “correo electrónico”: “usuario1@mail.com”, “creado”: “2023-01-01”}
+]
+
+6. Crear controlador y  su respectiva ruta para el endpoint “/posts” y la misma devuelva una  lista de posts de usuarios en formato JSON. La lista debe contener objetos que representen todos los posts de un usuario y que incluya:  id, titulo, fecha de creado y user_id. (20 min)
+
+Deben generar soporte en la ruta (endpoint) “/posts”. usando el verbo GET
+El endpoint debe contestar con un codigo de estatus 200 y enviar la respuesta en formato JSON al cliente que hace la solicitud. POSTMAN o similar.
+La API debe devolver un Array de objetos JSON que contengan los datos de todos los usuarios. Ejemplo: 
+[
+
+	{“id”: 1,  “titulo”: “lorem ipsum”, “creado”: “2023-01-01”, “user_id”: 1},
+{“id”: 2,  “titulo”: “lorem ipsum”, “creado”: “2023-01-01”, “user_id”: 1},
+{“id”: 3,  “titulo”: “lorem ipsum”, “creado”: “2023-01-01”, “user_id”: 2},
+{“id”: 4,  “titulo”: “lorem ipsum”, “creado”: “2023-01-01”, “user_id”: 3}
+]
